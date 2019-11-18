@@ -1,11 +1,17 @@
 <ion-header no-border>
-    <ion-toolbar>
+    <!-- para cambiar el color al toolbar, mismas clases de boostrap -->
+    <ion-toolbar color="dark">
         <ion-title>
             Pendientes
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content color="dark">
+    <ion-list color="dark">
+        <!-- visualizacion para poder ver detalles detail -->
+        <ion-item *ngFor="let item of listaDePendientes" detail color="dark">
+            <ion-label>{{item.titulo}}</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

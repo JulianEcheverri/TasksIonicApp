@@ -15,8 +15,12 @@ export class TasksService {
   // idea del servicio es manejar una unica instancia a lo largo de la aplicacion
   constructor() 
   { 
-    console.log('servicio inicializado');
-
+    // crear dos listas para las pruebas visuales
+    const lista1 = new ListaDeTareas('Recolectar priedas del infinito');
+    const lista2 = new ListaDeTareas('Heroes a desaparecer');
+    this.listasDeTareas.push(lista1,lista2);
+    // console.log(this.listasDeTareas);
+    
   }
 
 
