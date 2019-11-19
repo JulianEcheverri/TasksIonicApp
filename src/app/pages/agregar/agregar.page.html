@@ -1,9 +1,31 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Agregar lista</ion-title>
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <!-- especificamos con slot el lugar donde queremos mostrar los botones--start en la izquierda y end en la derecha -->
+        <ion-buttons slot="start">
+            <!-- ionic tiene un boton especializado para volver atras -->
+            <!-- el boton se meustra si proviene de una pagina anterior
+            si no existe un pagina anterior, se forza con el defaultHref="/" dandole una ruta por defecto -->
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Nombre de la lista</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <h1>Agregar lista</h1>
+<ion-content color="dark">
+    <!-- se acostumbra usar ion-list por que este trae scroll y nos permite movilizarnos mejor -->
+    <ion-list color="dark">
+        <ion-item color="dark">
+            <ion-label position="floating">Nuevo item</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-list-header color="dark">
+            <ion-label>Tareas por hacer</ion-label>
+        </ion-list-header>
+        <ion-item color="dark">
+            <ion-checkbox slot="start"></ion-checkbox>
+            <ion-label>Morirse pronto</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

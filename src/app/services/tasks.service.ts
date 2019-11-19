@@ -23,5 +23,9 @@ export class TasksService {
     
   }
 
+  crearLista(titulo: string){
+    const nuevaLista = new ListaDeTareas(titulo);
+    this.listasDeTareas.push(nuevaLista);
+  }
 
 }
