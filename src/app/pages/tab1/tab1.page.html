@@ -14,4 +14,10 @@
             <ion-label>{{item.titulo}}</ion-label>
         </ion-item>
     </ion-list>
+    <!-- boton para llevarme a agregar lista el componente agregar mediante la funcion agregarLista dentro de esta componente-->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="agregarLista()">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

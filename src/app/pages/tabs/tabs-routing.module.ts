@@ -8,12 +8,17 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'tab1', //estamos indicando que para la ruta tab1, tenga rutas hijas, se especifica el path de las rutas hijas y se carga el modulo de rutas que ellas contienen 
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+          },
+          {
+            path: 'agregar',
+            loadChildren: () =>
+              import('../agregar/agregar.module').then(m => m.AgregarPageModule) // los dos puntos me devuelven a la carpeta anterior '..'
           }
         ]
       },
@@ -42,7 +47,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)], // indica que son rutas hijas
   exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}
