@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ListaDeTareas } from '../../models/listaDeTareas';
 
 @Component({
   selector: 'app-tab1',
@@ -52,17 +53,15 @@ export class Tab1Page {
             // se redirecciona al componente agregar
             const listaId = this.tasksService.crearLista(data.titulo);
             this.router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);
-            console.log(data);
+            // console.log(data);
           }
         }
       ]
     });
     alert.present();
-  }
+  }  
 
   // listaSeleccionada(lista: ListaDeTareas){
   //   this.router.navigateByUrl(`/tabs/tab1/agregar/${lista.id}`);
   // }
-
-
 }
