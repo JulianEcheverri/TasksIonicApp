@@ -7,7 +7,7 @@
             si no existe un pagina anterior, se forza con el defaultHref="/" dandole una ruta por defecto -->
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
-        <ion-title>Nombre de la lista</ion-title>
+        <ion-title>{{lista.titulo}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -15,17 +15,34 @@
     <!-- se acostumbra usar ion-list por que este trae scroll y nos permite movilizarnos mejor -->
     <ion-list color="dark">
         <ion-item color="dark">
-            <ion-label position="floating">Nuevo item</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label position="floating">Nueva tarea</ion-label>
+            <!-- // variable que almacenara lo que escriba en el html del componente
+            // usamos ngModel para crear una relacion, lo que escriba lo tendra la variable automaticamente
+            // como si fuera un onchange 
+            // parentesis por que emite un evento, y llaves por que escucha un evento
+            // ngModel escucha y emite eventos
+            -->
+            <!-- al presionar enter se llama la funcion de agregar tarea -->
+            <ion-input type="text" [(ngModel)]="nombreTarea" (keyup.enter)="agregarTarea()"></ion-input>
         </ion-item>
     </ion-list>
     <ion-list>
         <ion-list-header color="dark">
             <ion-label>Tareas por hacer</ion-label>
         </ion-list-header>
-        <ion-item color="dark">
-            <ion-checkbox slot="start"></ion-checkbox>
-            <ion-label>Morirse pronto</ion-label>
-        </ion-item>
+        <!-- ion-item-sliding funcionalidad para hacer un slide de un item de una lista y desplegar opciones -->
+        <ion-item-sliding *ngFor="let item of lista.tareas; let i = index" class="animated fadeInDown">
+            <ion-item color="dark">
+                <!-- ionic tiene un metodo para disparar el change -->
+                <ion-checkbox slot="start" [(ngModel)]="item.completado" (ionChange)="cambiarCheck(item)"></ion-checkbox>
+                <ion-label>{{item.descripcion}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option (click)="borrarTarea(i)" color="danger">
+                    <!-- slot para especificar que solo sea el icono -->
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
     </ion-list>
 </ion-content>

@@ -22,7 +22,7 @@ export class Tab1Page {
 
   // funcion para navergar a la ruta del componente agregar
   // funcion asincrona, la palabra async trasnforma toda la funcion en una promise que tiene catch, finally, then, etc
-  async agregarLista(){
+  async agregarLista() {
     // el alertController trabaja con una promesa, cuando ya se muestra la ventana del alerta, se dispara el then
     // con el await decimos que espere que todo se ejecute y luego se guarde en la constante 'alert' y luego la presentamos
     const alert = await this.alertController.create({
@@ -34,30 +34,31 @@ export class Tab1Page {
           type: 'text',
           placeholder: 'Nombre de la lista'
         }
-      ],    
+      ],
       buttons: [
         {
           text: 'Cancelar',
           role: 'cancel',
           handler: () =>{ // handler recibe una funcion, se ejecuta cuando el boton se toca o se cierra la ventana
             console.log('cancelar');
-          }          
+          }
         },
         {
-          text:'Crear',
+          text: 'Crear',
           // declaramos un handler para recibir los datos ingresados 
           handler: (data) => {
-            if (data.titulo.length === 0) return; // validacion por si no ingreso nada en el prompo
+            if (data.titulo.length === 0) { return; } // validacion por si no ingreso nada en el prompo
 
-            //creacion de la lista con el taskService
-            this.tasksService.crearLista(data.titulo);
+            // creacion de la lista con el taskService          
+            // cuando creo la lista necesito saber su id para redireccionarlo
+            // se redirecciona al componente agregar
+            const listaId = this.tasksService.crearLista(data.titulo);
+            this.router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);
             console.log(data);
           }
         }
       ]
     });
     alert.present();
-    //this.router.navigateByUrl('/tabs/tab1/agregar');
   }
-
 }

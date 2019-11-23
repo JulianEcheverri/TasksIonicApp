@@ -24,6 +24,12 @@ export class TasksService {
     const nuevaLista = new ListaDeTareas(titulo);
     this.listasDeTareas.push(nuevaLista);
     this.guardarStorage();
+    return nuevaLista.id;
+  }
+
+  obtenerLista(id: string | number) {
+    id = Number(id);
+    return this.listasDeTareas.find(x => x.id === id);
   }
 
   guardarStorage() {
@@ -36,6 +42,6 @@ export class TasksService {
   }
 
   cargarStorage() {
-    if (localStorage.getItem('data')) this.listasDeTareas = JSON.parse(localStorage.getItem('data'));
+    if (localStorage.getItem('data')) { this.listasDeTareas = JSON.parse(localStorage.getItem('data')); }
   }
 }

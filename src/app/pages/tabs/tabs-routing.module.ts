@@ -8,15 +8,16 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1', //estamos indicando que para la ruta tab1, tenga rutas hijas, se especifica el path de las rutas hijas y se carga el modulo de rutas que ellas contienen 
+        path: 'tab1', // estamos indicando que para la ruta tab1, tenga rutas hijas, se especifica el path de las rutas hijas y se carga el modulo de rutas que ellas contienen 
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          },
+          }, 
           {
-            path: 'agregar',
+            // recibiremos listaId para hacer modificaciones, funciona igual como las rutas de angular y los parametros
+            path: 'agregar/:listaId',
             loadChildren: () =>
               import('../agregar/agregar.module').then(m => m.AgregarPageModule) // los dos puntos me devuelven a la carpeta anterior '..'
           }
