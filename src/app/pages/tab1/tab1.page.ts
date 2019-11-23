@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks.service';
-import { ListaDeTareas } from '../../models/listaDeTareas';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -11,13 +10,12 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
 
-  listaDePendientes: ListaDeTareas[] = [];
   // para inyetar el servicio, poderse usar
   // insertamos el router de angular por que se necesita navegar al componente agregar dentro del componente tab
   // se manejara los formularios con los alert controller propios de ionic, se inyecta el alertController
   constructor(public tasksService: TasksService, private router: Router, private alertController: AlertController ) 
   {
-    this.listaDePendientes = tasksService.listasDeTareas;
+    
   }
 
   // funcion para navergar a la ruta del componente agregar
@@ -61,4 +59,10 @@ export class Tab1Page {
     });
     alert.present();
   }
+
+  // listaSeleccionada(lista: ListaDeTareas){
+  //   this.router.navigateByUrl(`/tabs/tab1/agregar/${lista.id}`);
+  // }
+
+
 }

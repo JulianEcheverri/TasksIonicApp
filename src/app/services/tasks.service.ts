@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ListaDeTareas } from "../models/listaDeTareas";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root" // para que sea global el servicio
 })
 export class TasksService {
   // aquie manejaremos las listas de las tareas
@@ -43,5 +43,10 @@ export class TasksService {
 
   cargarStorage() {
     if (localStorage.getItem('data')) { this.listasDeTareas = JSON.parse(localStorage.getItem('data')); }
+  }
+
+  borrarLista(lista: ListaDeTareas){
+    this.listasDeTareas = this.listasDeTareas.filter(x=> x.id !== lista.id);
+    this.guardarStorage();
   }
 }

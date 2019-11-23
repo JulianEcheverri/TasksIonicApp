@@ -7,13 +7,18 @@
     </ion-toolbar>
 </ion-header>
 
+
 <ion-content color="dark">
-    <ion-list color="dark">
-        <!-- visualizacion para poder ver detalles detail -->
-        <ion-item *ngFor="let item of listaDePendientes" detail color="dark">
-            <ion-label>{{item.titulo}}</ion-label>
-        </ion-item>
-    </ion-list>
+    <app-listas [terminada]=false></app-listas>
+
+    <!-- <ion-list color="dark"> -->
+    <!-- visualizacion para poder ver detalles detail -->
+    <!-- <ion-item *ngFor="let item of tasksService.listasDeTareas" detail color="dark" (click)="listaSeleccionada(item)"> -->
+    <!-- <ion-label>{{item.titulo}}</ion-label> -->
+    <!-- etiqueta de ionic para mostrar un numero con estilos -->
+    <!-- <ion-note slot="end" color="primary">{{item.tareas.length}} tareas</ion-note> -->
+    <!-- </ion-item>
+    </ion-list> -->
     <!-- boton para llevarme a agregar lista el componente agregar mediante la funcion agregarLista dentro de esta componente-->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="agregarLista()">
         <ion-fab-button>

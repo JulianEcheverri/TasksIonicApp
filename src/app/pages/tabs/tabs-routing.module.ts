@@ -30,6 +30,12 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+          },
+          // agregamos la ruta para el comportamiento del tab 2
+          {
+            path: 'agregar/:listaId',
+            loadChildren: () =>
+              import('../agregar/agregar.module').then(m => m.AgregarPageModule) // los dos puntos me devuelven a la carpeta anterior '..'
           }
         ]
       },

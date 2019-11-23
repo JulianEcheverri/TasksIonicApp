@@ -1,0 +1,16 @@
+<!-- nos saca error por que no tenemos los metodos del servicio, tenemos que inyectarlo en el constructor del componetne -->
+<ion-list color="dark">
+    <!-- usamos el pipe para filtrar la lista termianda -->
+    <ion-item-sliding *ngFor="let item of tasksService.listasDeTareas | filtro:terminada">
+        <ion-item color="dark" detail (click)="listaSeleccionada(item)" detail>
+            <ion-label>{{item.titulo}}</ion-label>
+            <ion-note slot="end" color="primary">{{item.tareas.length}} tareas</ion-note>
+        </ion-item>
+        <ion-item-options side="end">
+            <ion-item-option (click)="borrarLista(item)" color="danger">
+                <!-- slot para especificar que solo sea el icono -->
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
